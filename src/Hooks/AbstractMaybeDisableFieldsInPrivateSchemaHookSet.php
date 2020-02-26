@@ -2,7 +2,7 @@
 namespace PoP\AccessControl\Hooks;
 
 use PoP\AccessControl\Environment;
-use PoP\API\Hooks\AbstractMaybeDisableFieldsHookSet;
+use PoP\AccessControl\Hooks\AbstractMaybeDisableFieldsHookSet;
 
 abstract class AbstractMaybeDisableFieldsInPrivateSchemaHookSet extends AbstractMaybeDisableFieldsHookSet
 {

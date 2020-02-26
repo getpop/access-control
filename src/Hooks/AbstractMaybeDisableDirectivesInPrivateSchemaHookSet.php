@@ -2,7 +2,7 @@
 namespace PoP\AccessControl\Hooks;
 
 use PoP\AccessControl\Environment;
-use PoP\API\Hooks\AbstractMaybeDisableDirectivesHookSet;
+use PoP\AccessControl\Hooks\AbstractMaybeDisableDirectivesHookSet;
 
 abstract class AbstractMaybeDisableDirectivesInPrivateSchemaHookSet extends AbstractMaybeDisableDirectivesHookSet
 {
