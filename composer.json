@@ -1,7 +1,7 @@
 {
     "name": "getpop/access-control",
     "type": "library",
-    "description": "Access Control List for the API",
+    "description": "Access Control for fields and directives",
     "keywords": [
         "PoP",
         "AccessControl"
