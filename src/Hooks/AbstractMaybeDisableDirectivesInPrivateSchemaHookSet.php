@@ -1,7 +1,7 @@
 <?php
 namespace PoP\AccessControl\Hooks;
 
-use PoP\API\Environment;
+use PoP\AccessControl\Environment;
 use PoP\API\Hooks\AbstractMaybeDisableDirectivesHookSet;
 
 abstract class AbstractMaybeDisableDirectivesInPrivateSchemaHookSet extends AbstractMaybeDisableDirectivesHookSet

@@ -1,7 +1,7 @@
 <?php
 namespace PoP\AccessControl\TypeResolverDecorators;
 
-use PoP\API\Environment;
+use PoP\AccessControl\Environment;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
 use PoP\ComponentModel\TypeResolverDecorators\AbstractTypeResolverDecorator;
 
