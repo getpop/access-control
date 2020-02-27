@@ -1,1 +1,4 @@
 services:
+    access_control_manager:
+        class: \PoP\AccessControl\Services\AccessControlManager
+        public: true
