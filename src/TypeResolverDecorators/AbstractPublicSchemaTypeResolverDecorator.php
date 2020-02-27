@@ -17,6 +17,7 @@ abstract class AbstractPublicSchemaTypeResolverDecorator extends AbstractTypeRes
      */
     public function enabled(TypeResolverInterface $typeResolver): bool
     {
+        return !Environment::usePrivateSchemaMode();
         // By default, this value says: it is only enabled for the public schema.
         // However, this value can be overriden! If returning true, it will work for both public and private schemas
         // This is to allow the CacheControl to not cache the response whenever any field/directive involved in Access Control is added to the query

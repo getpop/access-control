@@ -15,11 +15,11 @@ class PublicSchemaTypeResolverDecoratorHookSet extends AbstractHookSet
         // It will not have any influence though, since it comes after ValidateDirective, which removes the results,
         // and then ValidateIsUserLoggedInDirective has `needsIDsDataFields` => true, so it won't be executed
         // But by it being on the directive pipeline alone we can already attach the NoCacheDirective
-        $this->hooksAPI->addFilter(
-            AbstractPublicSchemaTypeResolverDecorator::HOOK_ENABLED,
-            function() {
-                return true;
-            }
-        );
+        // $this->hooksAPI->addFilter(
+        //     AbstractPublicSchemaTypeResolverDecorator::HOOK_ENABLED,
+        //     function() {
+        //         return true;
+        //     }
+        // );
     }
 }
