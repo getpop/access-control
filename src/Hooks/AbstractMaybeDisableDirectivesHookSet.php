@@ -56,7 +56,7 @@ abstract class AbstractMaybeDisableDirectivesHookSet extends AbstractCMSHookSet
             return false;
         }
         // Check if to remove the directive
-        return !$this->removeDirectiveName($typeResolver, $directiveResolver, $directiveName);
+        return !$this->removeDirective($typeResolver, $directiveResolver, $directiveName);
     }
     /**
      * Affected directives
@@ -75,7 +75,7 @@ abstract class AbstractMaybeDisableDirectivesHookSet extends AbstractCMSHookSet
      * @param string $directiveName
      * @return boolean
      */
-    protected function removeDirectiveName(TypeResolverInterface $typeResolver, DirectiveResolverInterface $directiveResolver, string $directiveName): bool
+    protected function removeDirective(TypeResolverInterface $typeResolver, DirectiveResolverInterface $directiveResolver, string $directiveName): bool
     {
         return true;
     }
