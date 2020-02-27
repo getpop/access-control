@@ -8,26 +8,26 @@ class AccessControlManager implements AccessControlManagerInterface
     protected $fieldEntries = [];
     protected $directiveEntries = [];
 
-    public function getEntriesForFields(string $group/*, string $id*/): array
+    public function getEntriesForFields(string $group): array
     {
-        return $this->fieldEntries[$group]/*[$id]*/ ?? [];
+        return $this->fieldEntries[$group] ?? [];
     }
-    public function getEntriesForDirectives(string $group/*, string $id*/): array
+    public function getEntriesForDirectives(string $group): array
     {
-        return $this->directiveEntries[$group]/*[$id]*/ ?? [];
+        return $this->directiveEntries[$group] ?? [];
     }
 
-    public function addEntriesForFields(string $group/*, string $id*/, array $fieldEntries): void
+    public function addEntriesForFields(string $group, array $fieldEntries): void
     {
-        $this->fieldEntries[$group]/*[$id]*/ = array_merge(
-            $this->fieldEntries[$group]/*[$id]*/ ?? [],
+        $this->fieldEntries[$group] = array_merge(
+            $this->fieldEntries[$group] ?? [],
             $fieldEntries
         );
     }
-    public function addEntriesForDirectives(string $group/*, string $id*/, array $directiveEntries): void
+    public function addEntriesForDirectives(string $group, array $directiveEntries): void
     {
-        $this->directiveEntries[$group]/*[$id]*/ = array_merge(
-            $this->directiveEntries[$group]/*[$id]*/ ?? [],
+        $this->directiveEntries[$group] = array_merge(
+            $this->directiveEntries[$group] ?? [],
             $directiveEntries
         );
     }
