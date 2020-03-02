@@ -9,7 +9,6 @@ use PoP\AccessControl\TypeResolverDecorators\ValidateBasedOnConditionForFieldsTy
 abstract class AbstractMaybeDisableAccessForFieldsPublicSchemaTypeResolverDecorator extends AbstractPublicSchemaTypeResolverDecorator
 {
     use ConfigurableAccessControlForFieldsTypeResolverDecoratorTrait;
-    use ValidateBasedOnConditionForFieldsTypeResolverDecoratorTrait;
 
     protected function getMandatoryDirectives($entryValue = null): array
     {

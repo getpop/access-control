@@ -26,24 +26,16 @@ abstract class AbstractConfigurableAccessControlForFieldsInPrivateSchemaHookSet 
     protected function removeFieldName(TypeResolverInterface $typeResolver, FieldResolverInterface $fieldResolver, string $fieldName): bool
     {
         // Obtain all entries for the current combination of typeResolver/fieldName
-        if ($matchingEntries = $this->getEntries(
-            $typeResolver,
-            $fieldName
-        )) {
+        foreach ($this->getEntries($typeResolver, $fieldName) as $entry) {
             // Obtain the 3rd value on each entry: if the validation is "in" or "out"
-            $entryValues = array_values(array_unique(array_map(
-                function($entry) {
-                    return $entry[2];
-                },
-                $matchingEntries
-            )));
+            $entryValue = $entry[2];
             // Let the implementation class decide if to remove the field or not
-            return $this->removeFieldNameBasedOnMatchingEntryValues($entryValues);
+            return $this->removeFieldNameBasedOnMatchingEntryValue($entryValue);
         }
         return false;
     }
 
-    protected function removeFieldNameBasedOnMatchingEntryValues(array $entryValues): bool
+    protected function removeFieldNameBasedOnMatchingEntryValue($entryValue = nul): bool
     {
         return true;
     }

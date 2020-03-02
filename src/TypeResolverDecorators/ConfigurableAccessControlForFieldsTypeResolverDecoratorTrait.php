@@ -24,4 +24,26 @@ trait ConfigurableAccessControlForFieldsTypeResolverDecoratorTrait
             static::getConfigurationEntries()
         );
     }
+
+    abstract protected function getMandatoryDirectives($entryValue = null): array;
+
+    public function getMandatoryDirectivesForFields(TypeResolverInterface $typeResolver): array
+    {
+        $mandatoryDirectivesForFields = [];
+        // Obtain all capabilities allowed for the current combination of typeResolver/fieldName
+        foreach ($this->getFieldNames() as $fieldName) {
+            foreach ($this->getEntries($typeResolver, $fieldName) as $entry) {
+                $entryValue = $entry[2];
+                if ($this->removeFieldNameBasedOnMatchingEntryValue($entryValue)) {
+                    $mandatoryDirectivesForFields[$fieldName] = $this->getMandatoryDirectives($entryValue);
+                }
+            }
+        }
+        return $mandatoryDirectivesForFields;
+    }
+
+    protected function removeFieldNameBasedOnMatchingEntryValue($entryValue = null): bool
+    {
+        return true;
+    }
 }
