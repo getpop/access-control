@@ -16,8 +16,7 @@ trait ValidateBasedOnConditionForFieldsTypeResolverDecoratorTrait
         $mandatoryDirectives = $this->getMandatoryDirectives();
         // Obtain all capabilities allowed for the current combination of typeResolver/fieldName
         foreach ($this->getFieldNames() as $fieldName) {
-            if ($matchingEntries = $this->getMatchingEntriesFromConfiguration(
-                $entryList,
+            if ($matchingEntries = $this->getMatchingEntries(
                 $typeResolver,
                 $fieldName
             )) {

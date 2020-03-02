@@ -30,6 +30,20 @@ trait MaybeDisableFieldsIfConditionTrait
     }
 
     /**
+     * Configuration entries
+     *
+     * @return array
+     */
+    protected function getMatchingEntries(TypeResolverInterface $typeResolver, string $fieldName): array
+    {
+        return $this->getMatchingEntriesFromConfiguration(
+            static::getEntryList(),
+            $typeResolver,
+            $fieldName
+        );
+    }
+
+    /**
      * Filter all the entries from the list which apply to the passed typeResolver and fieldName
      *
      * @param boolean $include
