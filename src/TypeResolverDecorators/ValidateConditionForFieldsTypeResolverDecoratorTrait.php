@@ -2,11 +2,11 @@
 namespace PoP\AccessControl\TypeResolverDecorators;
 
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
-use PoP\AccessControl\ConfigurationEntries\AccessControlForFieldsTrait;
+use PoP\AccessControl\ConfigurationEntries\ConfigurableAccessControlForFieldsTrait;
 
 trait ValidateConditionForFieldsTypeResolverDecoratorTrait
 {
-    use AccessControlForFieldsTrait;
+    use ConfigurableAccessControlForFieldsTrait;
 
     public function enabled(TypeResolverInterface $typeResolver): bool
     {

@@ -1,11 +1,11 @@
 <?php
 namespace PoP\AccessControl\Hooks;
 
-use PoP\AccessControl\ConfigurationEntries\AccessControlForFieldsTrait;
+use PoP\AccessControl\ConfigurationEntries\ConfigurableAccessControlForFieldsTrait;
 
 trait MaybeDisableFieldsIfConditionPrivateSchemaHookSetTrait
 {
-    use AccessControlForFieldsTrait;
+    use ConfigurableAccessControlForFieldsTrait;
 
     protected function enabled(): bool
     {

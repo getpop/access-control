@@ -3,7 +3,7 @@ namespace PoP\AccessControl\ConfigurationEntries;
 
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
 
-trait AccessControlForFieldsTrait
+trait ConfigurableAccessControlForFieldsTrait
 {
     /**
      * Configuration entries
