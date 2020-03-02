@@ -3,13 +3,10 @@ namespace PoP\AccessControl\TypeResolverDecorators;
 
 use PoP\ComponentModel\Facades\Schema\FieldQueryInterpreterFacade;
 use PoP\AccessControl\DirectiveResolvers\DisableAccessDirectiveResolver;
-use PoP\AccessControl\TypeResolverDecorators\AbstractPublicSchemaTypeResolverDecorator;
-use PoP\AccessControl\TypeResolverDecorators\ValidateConditionForDirectivesTypeResolverDecoratorTrait;
+use PoP\AccessControl\TypeResolverDecorators\AbstractConfigurableAccessControlForDirectivesInPublicSchemaTypeResolverDecorator;
 
-abstract class AbstractMaybeDisableAccessForDirectivesPublicSchemaTypeResolverDecorator extends AbstractPublicSchemaTypeResolverDecorator
+abstract class AbstractMaybeDisableAccessForDirectivesPublicSchemaTypeResolverDecorator extends AbstractConfigurableAccessControlForDirectivesInPublicSchemaTypeResolverDecorator
 {
-    use ValidateConditionForDirectivesTypeResolverDecoratorTrait;
-
     protected function getMandatoryDirectives($entryValue = null): array
     {
         $fieldQueryInterpreter = FieldQueryInterpreterFacade::getInstance();
