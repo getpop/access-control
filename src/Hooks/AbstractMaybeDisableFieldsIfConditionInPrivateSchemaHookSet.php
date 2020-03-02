@@ -20,7 +20,7 @@ abstract class AbstractMaybeDisableFieldsIfConditionInPrivateSchemaHookSet exten
     protected function removeFieldName(TypeResolverInterface $typeResolver, FieldResolverInterface $fieldResolver, string $fieldName): bool
     {
         // Obtain all entries for the current combination of typeResolver/fieldName
-        if ($matchingEntries = $this->getMatchingEntries(
+        if ($matchingEntries = $this->getEntries(
             $typeResolver,
             $fieldName
         )) {

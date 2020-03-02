@@ -14,7 +14,7 @@ trait ValidateBasedOnConditionForDirectivesTypeResolverDecoratorTrait
         $mandatoryDirectivesForDirectives = [];
         $entryList = static::getEntryList();
 
-        if ($matchingEntries = $this->getMatchingEntriesFromConfiguration(
+        if ($matchingEntries = $this->getMatchingEntries(
             $entryList,
             $this->getRequiredEntryValue()
         )) {

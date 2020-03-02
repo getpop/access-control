@@ -17,11 +17,11 @@ trait MaybeDisableDirectivesIfConditionTrait
      *
      * @return array
      */
-    protected function getMatchingEntries(): array
+    protected function getEntries(): array
     {
         $entryList = $this->getEntryList();
         if ($requiredEntryValue = $this->getRequiredEntryValue()) {
-            return $this->getMatchingEntriesFromConfiguration(
+            return $this->getMatchingEntries(
                 $entryList,
                 $requiredEntryValue
             );
@@ -54,7 +54,7 @@ trait MaybeDisableDirectivesIfConditionTrait
             function($entry) {
                 return $entry[0];
             },
-            $this->getMatchingEntries()
+            $this->getEntries()
         )));
     }
 
@@ -67,7 +67,7 @@ trait MaybeDisableDirectivesIfConditionTrait
      * @param string $fieldName
      * @return boolean
      */
-    protected function getMatchingEntriesFromConfiguration(array $entryList, ?string $value): array
+    protected function getMatchingEntries(array $entryList, ?string $value): array
     {
         if ($value) {
             return array_filter(

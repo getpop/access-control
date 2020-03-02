@@ -10,6 +10,6 @@ trait MaybeDisableDirectivesInPrivateSchemaHookSetTrait
 
     protected function enabled(): bool
     {
-        return Environment::usePrivateSchemaMode() && !empty($this->getMatchingEntries());
+        return Environment::usePrivateSchemaMode() && !empty($this->getEntries());
     }
 }
