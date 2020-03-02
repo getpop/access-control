@@ -1,0 +1,7 @@
+<?php
+namespace PoP\AccessControl\TypeResolverDecorators;
+
+abstract class AbstractConfigurableAccessControlForFieldsInPublicSchemaTypeResolverDecorator extends AbstractPublicSchemaTypeResolverDecorator
+{
+    use ConfigurableAccessControlForFieldsTypeResolverDecoratorTrait;
+}
