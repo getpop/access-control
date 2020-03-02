@@ -3,9 +3,9 @@ namespace PoP\AccessControl\Hooks;
 
 use PoP\AccessControl\Services\AccessControlGroups;
 use PoP\AccessControl\Facades\AccessControlManagerFacade;
-use PoP\AccessControl\Hooks\AbstractMaybeDisableDirectivesInPrivateSchemaHookSet;
+use PoP\AccessControl\Hooks\AbstractConfigurableAccessControlForDirectivesInPrivateSchemaHookSet;
 
-class MaybeDisableDirectivesInPrivateSchemaHookSet extends AbstractMaybeDisableDirectivesInPrivateSchemaHookSet
+class MaybeDisableDirectivesInPrivateSchemaHookSet extends AbstractConfigurableAccessControlForDirectivesInPrivateSchemaHookSet
 {
     protected function getConfigurationEntries(): array
     {
