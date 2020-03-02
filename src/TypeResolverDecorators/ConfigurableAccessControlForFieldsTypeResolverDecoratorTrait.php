@@ -4,7 +4,7 @@ namespace PoP\AccessControl\TypeResolverDecorators;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
 use PoP\AccessControl\ConfigurationEntries\ConfigurableAccessControlForFieldsTrait;
 
-trait ValidateConditionForFieldsTypeResolverDecoratorTrait
+trait ConfigurableAccessControlForFieldsTypeResolverDecoratorTrait
 {
     use ConfigurableAccessControlForFieldsTrait;
 

@@ -5,7 +5,7 @@ use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
 
 trait ValidateBasedOnConditionForFieldsTypeResolverDecoratorTrait
 {
-    use ValidateConditionForFieldsTypeResolverDecoratorTrait;
+    use ConfigurableAccessControlForFieldsTypeResolverDecoratorTrait;
 
     abstract protected function getMandatoryDirectives(): array;
 
