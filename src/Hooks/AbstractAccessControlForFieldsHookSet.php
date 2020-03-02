@@ -1,12 +1,12 @@
 <?php
 namespace PoP\AccessControl\Hooks;
 
-use PoP\Engine\Hooks\AbstractCMSHookSet;
+use PoP\Engine\Hooks\AbstractCMSBootHookSet;
 use PoP\ComponentModel\TypeResolvers\HookHelpers;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
 use PoP\ComponentModel\FieldResolvers\FieldResolverInterface;
 
-abstract class AbstractAccessControlForFieldsHookSet extends AbstractCMSHookSet
+abstract class AbstractAccessControlForFieldsHookSet extends AbstractCMSBootHookSet
 {
     /**
      * Indicate if this hook is enabled
@@ -17,7 +17,7 @@ abstract class AbstractAccessControlForFieldsHookSet extends AbstractCMSHookSet
     {
         return true;
     }
-    public function cmsInit(): void
+    public function cmsBoot(): void
     {
         if (!$this->enabled()) {
             return;

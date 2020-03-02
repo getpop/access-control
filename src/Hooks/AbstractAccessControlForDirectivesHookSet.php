@@ -1,15 +1,15 @@
 <?php
 namespace PoP\AccessControl\Hooks;
 
-use PoP\Engine\Hooks\AbstractCMSHookSet;
+use PoP\Engine\Hooks\AbstractCMSBootHookSet;
 use PoP\ComponentModel\TypeResolvers\HookHelpers;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
 use PoP\ComponentModel\FieldResolvers\FieldResolverInterface;
 use PoP\ComponentModel\DirectiveResolvers\DirectiveResolverInterface;
 
-abstract class AbstractAccessControlForDirectivesHookSet extends AbstractCMSHookSet
+abstract class AbstractAccessControlForDirectivesHookSet extends AbstractCMSBootHookSet
 {
-    public function cmsInit(): void
+    public function cmsBoot(): void
     {
         if (!$this->enabled()) {
             return;
