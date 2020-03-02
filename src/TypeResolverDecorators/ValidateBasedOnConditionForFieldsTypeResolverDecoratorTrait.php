@@ -12,7 +12,6 @@ trait ValidateBasedOnConditionForFieldsTypeResolverDecoratorTrait
     public function getMandatoryDirectivesForFields(TypeResolverInterface $typeResolver): array
     {
         $mandatoryDirectivesForFields = [];
-        $entryList = static::getEntryList();
         $mandatoryDirectives = $this->getMandatoryDirectives();
         // Obtain all capabilities allowed for the current combination of typeResolver/fieldName
         foreach ($this->getFieldNames() as $fieldName) {
