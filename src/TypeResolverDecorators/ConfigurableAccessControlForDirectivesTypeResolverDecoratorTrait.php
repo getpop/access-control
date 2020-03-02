@@ -5,7 +5,7 @@ use PoP\AccessControl\ConfigurationEntries\ConfigurableAccessControlForDirective
 use PoP\ComponentModel\TypeResolvers\AbstractTypeResolver;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
 
-trait ValidateConditionForDirectivesTypeResolverDecoratorTrait
+trait ConfigurableAccessControlForDirectivesTypeResolverDecoratorTrait
 {
     use ConfigurableAccessControlForDirectivesTrait;
 

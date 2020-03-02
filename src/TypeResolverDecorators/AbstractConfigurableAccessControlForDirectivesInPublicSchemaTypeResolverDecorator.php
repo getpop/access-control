@@ -3,5 +3,5 @@ namespace PoP\AccessControl\TypeResolverDecorators;
 
 abstract class AbstractConfigurableAccessControlForDirectivesInPublicSchemaTypeResolverDecorator extends AbstractPublicSchemaTypeResolverDecorator
 {
-    use ValidateConditionForDirectivesTypeResolverDecoratorTrait;
+    use ConfigurableAccessControlForDirectivesTypeResolverDecoratorTrait;
 }
