@@ -4,7 +4,7 @@ namespace PoP\AccessControl\Hooks;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
 use PoP\ComponentModel\FieldResolvers\FieldResolverInterface;
 
-abstract class AbstractMaybeDisableFieldsIfConditionInPrivateSchemaHookSet extends AbstractMaybeDisableFieldsInPrivateSchemaHookSet
+abstract class AbstractMaybeDisableFieldsIfConditionInPrivateSchemaHookSet extends AbstractAccessControlForFieldsInPrivateSchemaHookSet
 {
     use MaybeDisableFieldsIfConditionPrivateSchemaHookSetTrait;
 

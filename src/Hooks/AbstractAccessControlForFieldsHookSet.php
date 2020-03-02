@@ -6,7 +6,7 @@ use PoP\ComponentModel\TypeResolvers\HookHelpers;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
 use PoP\ComponentModel\FieldResolvers\FieldResolverInterface;
 
-abstract class AbstractMaybeDisableFieldsHookSet extends AbstractCMSHookSet
+abstract class AbstractAccessControlForFieldsHookSet extends AbstractCMSHookSet
 {
     /**
      * Indicate if this hook is enabled
