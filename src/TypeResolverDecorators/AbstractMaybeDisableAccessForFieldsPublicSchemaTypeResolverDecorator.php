@@ -11,7 +11,7 @@ abstract class AbstractMaybeDisableAccessForFieldsPublicSchemaTypeResolverDecora
     use ValidateConditionForFieldsTypeResolverDecoratorTrait;
     use ValidateBasedOnConditionForFieldsTypeResolverDecoratorTrait;
 
-    protected function getMandatoryDirectives(): array
+    protected function getMandatoryDirectives($entryValue = null): array
     {
         $fieldQueryInterpreter = FieldQueryInterpreterFacade::getInstance();
         $disableAccessDirective = $fieldQueryInterpreter->getDirective(
