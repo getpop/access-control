@@ -38,13 +38,16 @@ trait MaybeDisableDirectivesIfConditionTrait
      * @param string $fieldName
      * @return boolean
      */
-    protected function getMatchingEntriesFromConfiguration(array $entryList, string $state): array
+    protected function getMatchingEntriesFromConfiguration(array $entryList, ?string $state): array
     {
-        return array_filter(
-            $entryList,
-            function($entry) use($state) {
-                return $entry[1] == $state;
-            }
-        );
+        if ($state) {
+            return array_filter(
+                $entryList,
+                function($entry) use($state) {
+                    return $entry[1] == $state;
+                }
+            );
+        }
+        return $entryList;
     }
 }
