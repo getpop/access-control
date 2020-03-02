@@ -25,7 +25,7 @@ trait ValidateBasedOnConditionForFieldsTypeResolverDecoratorTrait
                     },
                     $matchingEntries
                 )))) {
-                    if ($this->removeFieldNameBasedOnCondition($states)) {
+                    if ($this->removeFieldNameBasedOnMatchingEntryValues($states)) {
                         $mandatoryDirectivesForFields[$fieldName] = $mandatoryDirectives;
                     }
                 }
@@ -34,7 +34,7 @@ trait ValidateBasedOnConditionForFieldsTypeResolverDecoratorTrait
         return $mandatoryDirectivesForFields;
     }
 
-    protected function removeFieldNameBasedOnCondition(array $states): bool
+    protected function removeFieldNameBasedOnMatchingEntryValues(array $states): bool
     {
         return true;
     }

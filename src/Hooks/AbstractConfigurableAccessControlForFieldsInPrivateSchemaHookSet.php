@@ -38,12 +38,12 @@ abstract class AbstractConfigurableAccessControlForFieldsInPrivateSchemaHookSet 
                 $matchingEntries
             )));
             // Let the implementation class decide if to remove the field or not
-            return $this->removeFieldNameBasedOnCondition($entryValues);
+            return $this->removeFieldNameBasedOnMatchingEntryValues($entryValues);
         }
         return false;
     }
 
-    protected function removeFieldNameBasedOnCondition(array $entryValues): bool
+    protected function removeFieldNameBasedOnMatchingEntryValues(array $entryValues): bool
     {
         return true;
     }
