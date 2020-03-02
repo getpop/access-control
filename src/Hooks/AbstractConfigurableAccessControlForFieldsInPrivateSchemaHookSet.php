@@ -31,19 +31,19 @@ abstract class AbstractConfigurableAccessControlForFieldsInPrivateSchemaHookSet 
             $fieldName
         )) {
             // Obtain the 3rd value on each entry: if the validation is "in" or "out"
-            $configuredEntryStates = array_values(array_unique(array_map(
+            $entryValues = array_values(array_unique(array_map(
                 function($entry) {
                     return $entry[2];
                 },
                 $matchingEntries
             )));
             // Let the implementation class decide if to remove the field or not
-            return $this->removeFieldNameBasedOnCondition($configuredEntryStates);
+            return $this->removeFieldNameBasedOnCondition($entryValues);
         }
         return false;
     }
 
-    protected function removeFieldNameBasedOnCondition(array $configuredEntryStates): bool
+    protected function removeFieldNameBasedOnCondition(array $entryValues): bool
     {
         return true;
     }
