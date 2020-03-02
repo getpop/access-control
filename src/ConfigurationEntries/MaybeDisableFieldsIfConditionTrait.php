@@ -34,7 +34,7 @@ trait MaybeDisableFieldsIfConditionTrait
      *
      * @return array
      */
-    protected function getEntries(TypeResolverInterface $typeResolver, string $fieldName): array
+    final protected function getEntries(TypeResolverInterface $typeResolver, string $fieldName): array
     {
         return $this->getMatchingEntries(
             static::getConfigurationEntries(),
@@ -52,7 +52,7 @@ trait MaybeDisableFieldsIfConditionTrait
      * @param string $fieldName
      * @return boolean
      */
-    protected function getMatchingEntries(array $entryList, TypeResolverInterface $typeResolver, string $fieldName): array
+    final protected function getMatchingEntries(array $entryList, TypeResolverInterface $typeResolver, string $fieldName): array
     {
         $typeResolverClass = get_class($typeResolver);
         return array_filter(
