@@ -7,7 +7,7 @@ use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
 use PoP\ComponentModel\FieldResolvers\FieldResolverInterface;
 use PoP\ComponentModel\DirectiveResolvers\DirectiveResolverInterface;
 
-abstract class AbstractMaybeDisableDirectivesHookSet extends AbstractCMSHookSet
+abstract class AbstractAccessControlForDirectivesHookSet extends AbstractCMSHookSet
 {
     public function cmsInit(): void
     {
