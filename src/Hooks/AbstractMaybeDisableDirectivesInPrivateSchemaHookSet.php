@@ -3,11 +3,11 @@ namespace PoP\AccessControl\Hooks;
 
 use PoP\AccessControl\Hooks\AbstractMaybeDisableDirectivesHookSet;
 use PoP\AccessControl\Environment;
-use PoP\AccessControl\ConfigurationEntries\MaybeDisableDirectivesIfConditionTrait;
+use PoP\AccessControl\ConfigurationEntries\AccessControlForDirectivesTrait;
 
 abstract class AbstractMaybeDisableDirectivesInPrivateSchemaHookSet extends AbstractMaybeDisableDirectivesHookSet
 {
-    use MaybeDisableDirectivesIfConditionTrait;
+    use AccessControlForDirectivesTrait;
 
     protected function enabled(): bool
     {

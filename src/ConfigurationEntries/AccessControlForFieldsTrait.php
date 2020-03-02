@@ -3,7 +3,7 @@ namespace PoP\AccessControl\ConfigurationEntries;
 
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
 
-trait MaybeDisableFieldsIfConditionTrait
+trait AccessControlForFieldsTrait
 {
     /**
      * Configuration entries
