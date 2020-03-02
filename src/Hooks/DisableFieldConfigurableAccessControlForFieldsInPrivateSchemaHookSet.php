@@ -5,7 +5,7 @@ use PoP\AccessControl\Services\AccessControlGroups;
 use PoP\AccessControl\Facades\AccessControlManagerFacade;
 use PoP\AccessControl\Hooks\AbstractConfigurableAccessControlForFieldsInPrivateSchemaHookSet;
 
-class MaybeDisableFieldsPrivateSchemaHookSet extends AbstractConfigurableAccessControlForFieldsInPrivateSchemaHookSet
+class DisableFieldConfigurableAccessControlForFieldsInPrivateSchemaHookSet extends AbstractConfigurableAccessControlForFieldsInPrivateSchemaHookSet
 {
     /**
      * Configuration entries
