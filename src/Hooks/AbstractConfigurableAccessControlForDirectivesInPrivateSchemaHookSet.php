@@ -3,7 +3,7 @@ namespace PoP\AccessControl\Hooks;
 
 use PoP\AccessControl\ConfigurationEntries\ConfigurableAccessControlForDirectivesTrait;
 
-abstract class AbstractConfigurableAccessControlForDirectivesInPrivateSchemaHookSet extends AbstractMaybeDisableDirectivesInPrivateSchemaHookSet
+abstract class AbstractConfigurableAccessControlForDirectivesInPrivateSchemaHookSet extends AbstractAccessControlForDirectivesInPrivateSchemaHookSet
 {
     use ConfigurableAccessControlForDirectivesTrait;
 
