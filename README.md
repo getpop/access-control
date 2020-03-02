@@ -30,14 +30,28 @@ $ composer require getpop/access-control dev-master
 }
 ```
 
-([PoP](https://github.com/leoloso/PoP) must be installed)
+## How does it work?
 
-<!--
-## Usage
+Access control deals in 2 modes: Public/Private schema modes.
 
-``` php
-```
--->
+The difference between Public and Private schema modes concerns the feedback given to the user when a validation fails. In Public mode, a detailed error message is given to the user (eg: "only users with role 'administrator' can access this field). In Private mode, there is no helpful information, instead the user is told that the field or directive does not exist.
+
+We need to implement 4 cases of access control:
+
+1. Fields in Public schema mode
+2. Directives in Public schema mode
+3. Fields in Private schema mode
+4. Directives in Private schema mode
+
+In Public schema mode, we can simply add a special directive that will validate the restriction (such as: is the user logged in? does the logged-in user have a specific role or capability?).
+
+In Private mode, we add a hook that filters out the field or directive before it is registered.
+
+In addition, whenever a validation must be performed to know if the user can access a field or directive, the response from the GraphQL server cannot be cached (when using component [Cache Control](https://github.com/getpop/cache-control)). For the Public mode this situation is automatically handled, since the directive validating if the user is logged in or not already indicates that the response cannot be cached. For the Private mode, however, we need to add a special directive `"NoCache"`. Hence, we need to deal with the following 2 cases:
+
+1. `NoCache` for Fields in Private schema mode
+2. `NoCache` for Directives in Private schema mode
+
 
 ## Change log
 
