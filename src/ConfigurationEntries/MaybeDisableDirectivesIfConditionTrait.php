@@ -13,20 +13,49 @@ trait MaybeDisableDirectivesIfConditionTrait
     abstract protected function getEntryList(): array;
 
     /**
-     * Directive names to remove
+     * Configuration entries
      *
      * @return array
      */
+    protected function getMatchingEntries(): array
+    {
+        $entryList = $this->getEntryList();
+        if ($requiredEntryValue = $this->getRequiredEntryValue()) {
+            return $this->getMatchingEntriesFromConfiguration(
+                $entryList,
+                $requiredEntryValue
+            );
+        }
+        return $entryList;
+    }
+
+    /**
+     * The value in the 2nd element from the entry
+     *
+     * @return string
+     */
+    protected function getRequiredEntryValue(): ?string
+    {
+        return null;
+    }
+
+    /**
+     * Remove directiveName "translate" if the user is not logged in
+     *
+     * @param boolean $include
+     * @param TypeResolverInterface $typeResolver
+     * @param string $directiveName
+     * @return boolean
+     */
     protected function getDirectiveResolverClasses(): array
     {
-        return array_map(
+        // Obtain all entries for the current combination of typeResolver/fieldName
+        return array_values(array_unique(array_map(
             function($entry) {
-                // The entry has format [directiveResolverClass, value]
-                // So, in position [0], will always be the $directiveResolverClass
                 return $entry[0];
             },
-           $this->getEntryList()
-        );
+            $this->getMatchingEntries()
+        )));
     }
 
     /**
@@ -38,13 +67,13 @@ trait MaybeDisableDirectivesIfConditionTrait
      * @param string $fieldName
      * @return boolean
      */
-    protected function getMatchingEntriesFromConfiguration(array $entryList, ?string $state): array
+    protected function getMatchingEntriesFromConfiguration(array $entryList, ?string $value): array
     {
-        if ($state) {
+        if ($value) {
             return array_filter(
                 $entryList,
-                function($entry) use($state) {
-                    return $entry[1] == $state;
+                function($entry) use($value) {
+                    return $entry[1] == $value;
                 }
             );
         }
