@@ -7,8 +7,6 @@ trait ValidateBasedOnConditionForDirectivesTypeResolverDecoratorTrait
 {
     use ValidateConditionForDirectivesTypeResolverDecoratorTrait;
 
-    abstract protected function getEntryList(): array;
-
     abstract protected function getMandatoryDirectives(): array;
 
     public function getMandatoryDirectivesForDirectives(TypeResolverInterface $typeResolver): array

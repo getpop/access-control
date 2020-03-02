@@ -7,8 +7,6 @@ trait ValidateBasedOnConditionForFieldsTypeResolverDecoratorTrait
 {
     use ValidateConditionForFieldsTypeResolverDecoratorTrait;
 
-    abstract protected static function getEntryList(): array;
-
     abstract protected function getMandatoryDirectives(): array;
 
     public function getMandatoryDirectivesForFields(TypeResolverInterface $typeResolver): array
