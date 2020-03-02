@@ -3,17 +3,9 @@ namespace PoP\AccessControl\Hooks;
 
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
 use PoP\ComponentModel\FieldResolvers\FieldResolverInterface;
-use PoP\AccessControl\ConfigurationEntries\ConfigurableAccessControlForFieldsTrait;
 
-abstract class AbstractMaybeDisableFieldsIfConditionInPrivateSchemaHookSet extends AbstractAccessControlForFieldsInPrivateSchemaHookSet
+abstract class AbstractMaybeDisableFieldsIfConditionInPrivateSchemaHookSet extends AbstractConfigurableAccessControlForFieldsInPrivateSchemaHookSet
 {
-    use ConfigurableAccessControlForFieldsTrait;
-
-    protected function enabled(): bool
-    {
-        return parent::enabled() && !empty(static::getConfigurationEntries());
-    }
-
     /**
      * Remove fieldName "roles" if the user is not logged in
      *
