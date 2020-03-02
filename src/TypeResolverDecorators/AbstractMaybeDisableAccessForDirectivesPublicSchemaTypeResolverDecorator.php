@@ -8,7 +8,6 @@ use PoP\AccessControl\TypeResolverDecorators\ValidateBasedOnConditionForDirectiv
 
 abstract class AbstractMaybeDisableAccessForDirectivesPublicSchemaTypeResolverDecorator extends AbstractPublicSchemaTypeResolverDecorator
 {
-    use ValidateConditionForDirectivesTypeResolverDecoratorTrait;
     use ValidateBasedOnConditionForDirectivesTypeResolverDecoratorTrait;
 
     protected function getMandatoryDirectives(): array

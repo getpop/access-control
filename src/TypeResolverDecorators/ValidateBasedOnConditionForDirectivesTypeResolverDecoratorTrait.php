@@ -16,7 +16,7 @@ trait ValidateBasedOnConditionForDirectivesTypeResolverDecoratorTrait
 
         if ($matchingEntries = $this->getMatchingEntriesFromConfiguration(
             $entryList,
-            $this->getRequiredEntryState()
+            $this->getRequiredEntryValue()
         )) {
             $directiveResolverClasses = array_values(array_unique(array_map(
                 function($entry) {
@@ -30,10 +30,5 @@ trait ValidateBasedOnConditionForDirectivesTypeResolverDecoratorTrait
             }
         }
         return $mandatoryDirectivesForDirectives;
-    }
-
-    protected function getRequiredEntryState(): ?string
-    {
-        return null;
     }
 }
