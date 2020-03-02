@@ -10,7 +10,7 @@ trait MaybeDisableDirectivesIfConditionTrait
      *
      * @return array
      */
-    abstract protected function getEntryList(): array;
+    abstract protected function getConfigurationEntries(): array;
 
     /**
      * Configuration entries
@@ -19,7 +19,7 @@ trait MaybeDisableDirectivesIfConditionTrait
      */
     protected function getEntries(): array
     {
-        $entryList = $this->getEntryList();
+        $entryList = $this->getConfigurationEntries();
         if ($requiredEntryValue = $this->getRequiredEntryValue()) {
             return $this->getMatchingEntries(
                 $entryList,

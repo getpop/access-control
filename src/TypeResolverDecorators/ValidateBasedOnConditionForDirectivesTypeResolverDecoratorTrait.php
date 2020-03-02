@@ -12,7 +12,7 @@ trait ValidateBasedOnConditionForDirectivesTypeResolverDecoratorTrait
     public function getMandatoryDirectivesForDirectives(TypeResolverInterface $typeResolver): array
     {
         $mandatoryDirectivesForDirectives = [];
-        $entryList = static::getEntryList();
+        $entryList = static::getConfigurationEntries();
 
         if ($matchingEntries = $this->getMatchingEntries(
             $entryList,

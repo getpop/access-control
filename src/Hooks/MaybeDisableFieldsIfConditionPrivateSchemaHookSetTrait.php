@@ -9,6 +9,6 @@ trait MaybeDisableFieldsIfConditionPrivateSchemaHookSetTrait
 
     protected function enabled(): bool
     {
-        return parent::enabled() && !empty(static::getEntryList());
+        return parent::enabled() && !empty(static::getConfigurationEntries());
     }
 }

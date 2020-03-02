@@ -7,7 +7,7 @@ use PoP\AccessControl\TypeResolverDecorators\AbstractMaybeDisableAccessForDirect
 
 class MaybeDisableAccessForDirectivesPublicSchemaTypeResolverDecorator extends AbstractMaybeDisableAccessForDirectivesPublicSchemaTypeResolverDecorator
 {
-    protected function getEntryList(): array
+    protected function getConfigurationEntries(): array
     {
         $accessControlManager = AccessControlManagerFacade::getInstance();
         return $accessControlManager->getEntriesForDirectives(AccessControlGroups::DISABLED);

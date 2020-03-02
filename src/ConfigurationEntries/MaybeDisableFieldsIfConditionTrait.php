@@ -10,7 +10,7 @@ trait MaybeDisableFieldsIfConditionTrait
      *
      * @return array
      */
-    abstract protected static function getEntryList(): array;
+    abstract protected static function getConfigurationEntries(): array;
 
     /**
      * Field names to remove
@@ -25,7 +25,7 @@ trait MaybeDisableFieldsIfConditionTrait
                 // So, in position [1], will always be the $fieldName
                 return $entry[1];
             },
-           static::getEntryList()
+           static::getConfigurationEntries()
         );
     }
 
@@ -37,7 +37,7 @@ trait MaybeDisableFieldsIfConditionTrait
     protected function getEntries(TypeResolverInterface $typeResolver, string $fieldName): array
     {
         return $this->getMatchingEntries(
-            static::getEntryList(),
+            static::getConfigurationEntries(),
             $typeResolver,
             $fieldName
         );
