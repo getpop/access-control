@@ -3,9 +3,9 @@ namespace PoP\AccessControl\Hooks;
 
 use PoP\AccessControl\Services\AccessControlGroups;
 use PoP\AccessControl\Facades\AccessControlManagerFacade;
-use PoP\AccessControl\Hooks\AbstractMaybeDisableFieldsIfConditionInPrivateSchemaHookSet;
+use PoP\AccessControl\Hooks\AbstractConfigurableAccessControlForFieldsInPrivateSchemaHookSet;
 
-class MaybeDisableFieldsPrivateSchemaHookSet extends AbstractMaybeDisableFieldsIfConditionInPrivateSchemaHookSet
+class MaybeDisableFieldsPrivateSchemaHookSet extends AbstractConfigurableAccessControlForFieldsInPrivateSchemaHookSet
 {
     /**
      * Configuration entries
