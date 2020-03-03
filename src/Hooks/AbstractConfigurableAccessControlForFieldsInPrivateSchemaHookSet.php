@@ -1,13 +1,13 @@
 <?php
 namespace PoP\AccessControl\Hooks;
 
-use PoP\AccessControl\ConfigurationEntries\ConfigurableAccessControlForFieldsTrait;
+use PoP\MandatoryDirectivesByConfiguration\ConfigurationEntries\ConfigurableMandatoryDirectivesForFieldsTrait;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
 use PoP\ComponentModel\FieldResolvers\FieldResolverInterface;
 
 abstract class AbstractConfigurableAccessControlForFieldsInPrivateSchemaHookSet extends AbstractAccessControlForFieldsInPrivateSchemaHookSet
 {
-    use ConfigurableAccessControlForFieldsTrait;
+    use ConfigurableMandatoryDirectivesForFieldsTrait;
 
     protected function enabled(): bool
     {
