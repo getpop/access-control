@@ -1,11 +1,11 @@
 <?php
 namespace PoP\AccessControl\Hooks;
 
-use PoP\AccessControl\ConfigurationEntries\ConfigurableAccessControlForDirectivesTrait;
+use PoP\MandatoryDirectivesByConfiguration\ConfigurationEntries\ConfigurableMandatoryDirectivesForDirectivesTrait;
 
 abstract class AbstractConfigurableAccessControlForDirectivesInPrivateSchemaHookSet extends AbstractAccessControlForDirectivesInPrivateSchemaHookSet
 {
-    use ConfigurableAccessControlForDirectivesTrait;
+    use ConfigurableMandatoryDirectivesForDirectivesTrait;
 
     protected function enabled(): bool
     {
