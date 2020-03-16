@@ -42,9 +42,21 @@ class Component extends AbstractComponent
     {
         parent::boot();
 
-        // // Initialize classes
+        // Initialize classes
         ContainerBuilderUtils::instantiateNamespaceServices(__NAMESPACE__.'\\Hooks');
-        ContainerBuilderUtils::attachTypeResolverDecoratorsFromNamespace(__NAMESPACE__.'\\TypeResolverDecorators');
         ContainerBuilderUtils::attachDirectiveResolversFromNamespace(__NAMESPACE__.'\\DirectiveResolvers');
+    }
+
+    /**
+     * Boot component
+     *
+     * @return void
+     */
+    public static function reallyBoot()
+    {
+        parent::reallyBoot();
+
+        // Initialize classes
+        ContainerBuilderUtils::attachTypeResolverDecoratorsFromNamespace(__NAMESPACE__.'\\TypeResolverDecorators');
     }
 }
