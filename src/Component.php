@@ -44,7 +44,7 @@ class Component extends AbstractComponent
 
         // Initialize classes
         ContainerBuilderUtils::instantiateNamespaceServices(__NAMESPACE__.'\\Hooks');
-        ContainerBuilderUtils::attachDirectiveResolversFromNamespace(__NAMESPACE__.'\\DirectiveResolvers');
+        ContainerBuilderUtils::attachAndRegisterDirectiveResolversFromNamespace(__NAMESPACE__.'\\DirectiveResolvers');
     }
 
     /**
