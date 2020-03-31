@@ -2,11 +2,14 @@
 namespace PoP\AccessControl\TypeResolverDecorators;
 
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
+use PoP\AccessControl\ConfigurationEntries\AccessControlConfigurableMandatoryDirectivesForFieldsTrait;
 use PoP\MandatoryDirectivesByConfiguration\TypeResolverDecorators\ConfigurableMandatoryDirectivesForFieldsTypeResolverDecoratorTrait;
 
 trait ConfigurableAccessControlForFieldsTypeResolverDecoratorTrait
 {
-    use ConfigurableMandatoryDirectivesForFieldsTypeResolverDecoratorTrait;
+    use ConfigurableMandatoryDirectivesForFieldsTypeResolverDecoratorTrait, AccessControlConfigurableMandatoryDirectivesForFieldsTrait {
+        AccessControlConfigurableMandatoryDirectivesForFieldsTrait::getMatchingEntries insteadof ConfigurableMandatoryDirectivesForFieldsTypeResolverDecoratorTrait;
+    }
 
     public function enabled(TypeResolverInterface $typeResolver): bool
     {
