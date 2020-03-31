@@ -8,7 +8,8 @@ use PoP\ComponentModel\DirectiveResolvers\AbstractValidateConditionDirectiveReso
 class DisableAccessDirectiveResolver extends AbstractValidateConditionDirectiveResolver
 {
     const DIRECTIVE_NAME = 'disableAccess';
-    public static function getDirectiveName(): string {
+    public static function getDirectiveName(): string
+    {
         return self::DIRECTIVE_NAME;
     }
 
