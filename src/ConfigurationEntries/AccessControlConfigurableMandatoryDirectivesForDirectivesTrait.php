@@ -12,6 +12,7 @@ trait AccessControlConfigurableMandatoryDirectivesForDirectivesTrait
     use ConfigurableMandatoryDirectivesForDirectivesTrait {
         ConfigurableMandatoryDirectivesForDirectivesTrait::getMatchingEntries as getUpstreamMatchingEntries;
     }
+    use AccessControlConfigurableMandatoryDirectivesForItemsTrait;
 
     /**
      * Filter all the entries from the list which apply to the passed typeResolver and fieldName
@@ -32,17 +33,13 @@ trait AccessControlConfigurableMandatoryDirectivesForDirectivesTrait
             return $this->getUpstreamMatchingEntries($entryList, $value);
         }
         if ($value) {
-            $enableIndividualControl = true;
             $individualControlSchemaMode = $this->getSchemaMode();
-            $matchNullControlEntry =
-                (Environment::usePrivateSchemaMode() && $individualControlSchemaMode == SchemaModes::PRIVATE_SCHEMA_MODE) ||
-                (!Environment::usePrivateSchemaMode() && $individualControlSchemaMode == SchemaModes::PUBLIC_SCHEMA_MODE);
+            $matchNullControlEntry = $this->doesSchemaModeProcessNullControlEntry();
             return array_filter(
                 $entryList,
-                function($entry) use($value, $enableIndividualControl, $individualControlSchemaMode, $matchNullControlEntry) {
+                function($entry) use($value, $individualControlSchemaMode, $matchNullControlEntry) {
                     return $entry[1] == $value &&
                     (
-                        !$enableIndividualControl ||
                         $entry[2] == $individualControlSchemaMode ||
                         (
                             is_null($entry[2]) &&
@@ -54,8 +51,6 @@ trait AccessControlConfigurableMandatoryDirectivesForDirectivesTrait
         }
         return $entryList;
     }
-
-    abstract protected function getSchemaMode(): string;
 
     public function maybeFilterDirectiveName(bool $include, TypeResolverInterface $typeResolver, DirectiveResolverInterface $directiveResolver, string $directiveName): bool
     {

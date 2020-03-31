@@ -12,6 +12,7 @@ trait AccessControlConfigurableMandatoryDirectivesForFieldsTrait
     use ConfigurableMandatoryDirectivesForFieldsTrait {
         ConfigurableMandatoryDirectivesForFieldsTrait::getMatchingEntries as getUpstreamMatchingEntries;
     }
+    use AccessControlConfigurableMandatoryDirectivesForItemsTrait;
 
     /**
      * Filter all the entries from the list which apply to the passed typeResolver and fieldName
@@ -34,19 +35,15 @@ trait AccessControlConfigurableMandatoryDirectivesForFieldsTrait
             return $this->getUpstreamMatchingEntries($entryList, $typeResolver, $fieldName);
         }
         $typeResolverClass = get_class($typeResolver);
-        $enableIndividualControl = true;
         $individualControlSchemaMode = $this->getSchemaMode();
-        $matchNullControlEntry =
-            (Environment::usePrivateSchemaMode() && $individualControlSchemaMode == SchemaModes::PRIVATE_SCHEMA_MODE) ||
-            (!Environment::usePrivateSchemaMode() && $individualControlSchemaMode == SchemaModes::PUBLIC_SCHEMA_MODE);
+        $matchNullControlEntry = $this->doesSchemaModeProcessNullControlEntry();
         return array_filter(
             $entryList,
-            function($entry) use($typeResolverClass, $fieldName, $enableIndividualControl, $individualControlSchemaMode, $matchNullControlEntry) {
+            function($entry) use($typeResolverClass, $fieldName, $individualControlSchemaMode, $matchNullControlEntry) {
                 return
                     $entry[0] == $typeResolverClass &&
                     $entry[1] == $fieldName &&
                     (
-                        !$enableIndividualControl ||
                         $entry[3] == $individualControlSchemaMode ||
                         (
                             is_null($entry[3]) &&
@@ -56,8 +53,6 @@ trait AccessControlConfigurableMandatoryDirectivesForFieldsTrait
             }
         );
     }
-
-    abstract protected function getSchemaMode(): string;
 
     public function maybeFilterFieldName(bool $include, TypeResolverInterface $typeResolver, FieldResolverInterface $fieldResolver, string $fieldName): bool
     {
