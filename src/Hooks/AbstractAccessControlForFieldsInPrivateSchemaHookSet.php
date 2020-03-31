@@ -2,6 +2,7 @@
 namespace PoP\AccessControl\Hooks;
 
 use PoP\AccessControl\Environment;
+use PoP\AccessControl\Schema\SchemaModes;
 use PoP\AccessControl\Hooks\AbstractAccessControlForFieldsHookSet;
 
 abstract class AbstractAccessControlForFieldsInPrivateSchemaHookSet extends AbstractAccessControlForFieldsHookSet
@@ -13,6 +14,13 @@ abstract class AbstractAccessControlForFieldsInPrivateSchemaHookSet extends Abst
      */
     protected function enabled(): bool
     {
-        return Environment::usePrivateSchemaMode();
+        return
+            Environment::enableIndividualControlForPublicPrivateSchemaMode() ||
+            Environment::usePrivateSchemaMode();
+    }
+
+    protected function getSchemaMode(): string
+    {
+        return SchemaModes::PRIVATE_SCHEMA_MODE;
     }
 }
