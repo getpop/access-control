@@ -9,7 +9,9 @@ use PoP\MandatoryDirectivesByConfiguration\ConfigurationEntries\ConfigurableMand
 
 trait AccessControlConfigurableMandatoryDirectivesForDirectivesTrait
 {
-    use ConfigurableMandatoryDirectivesForDirectivesTrait;
+    use ConfigurableMandatoryDirectivesForDirectivesTrait {
+        ConfigurableMandatoryDirectivesForDirectivesTrait::getMatchingEntries as getUpstreamMatchingEntries;
+    }
 
     /**
      * Filter all the entries from the list which apply to the passed typeResolver and fieldName
@@ -20,21 +22,21 @@ trait AccessControlConfigurableMandatoryDirectivesForDirectivesTrait
      */
     final protected function getMatchingEntries(array $entryList, ?string $value): array
     {
+        /**
+         * If enabling individual control over public/private schema modes, then we must also check
+         * that this field has the required mode.
+         * If the schema mode was not defined in the entry, then this field is valid if the default
+         * schema mode is the same required one
+         */
+        if (!Environment::enableIndividualControlForPublicPrivateSchemaMode()) {
+            return $this->getUpstreamMatchingEntries($entryList, $value);
+        }
         if ($value) {
-            /**
-             * If enabling individual control over public/private schema modes, then we must also check
-             * that this field has the required mode.
-             * If the schema mode was not defined in the entry, then this field is valid if the default
-             * schema mode is the same required one
-             */
-            $enableIndividualControl = $matchNullControlEntry = false;
-            if (Environment::enableIndividualControlForPublicPrivateSchemaMode()) {
-                $enableIndividualControl = true;
-                $individualControlSchemaMode = $this->getSchemaMode();
-                $matchNullControlEntry =
-                    (Environment::usePrivateSchemaMode() && $individualControlSchemaMode == SchemaModes::PRIVATE_SCHEMA_MODE) ||
-                    (!Environment::usePrivateSchemaMode() && $individualControlSchemaMode == SchemaModes::PUBLIC_SCHEMA_MODE);
-            }
+            $enableIndividualControl = true;
+            $individualControlSchemaMode = $this->getSchemaMode();
+            $matchNullControlEntry =
+                (Environment::usePrivateSchemaMode() && $individualControlSchemaMode == SchemaModes::PRIVATE_SCHEMA_MODE) ||
+                (!Environment::usePrivateSchemaMode() && $individualControlSchemaMode == SchemaModes::PUBLIC_SCHEMA_MODE);
             return array_filter(
                 $entryList,
                 function($entry) use($value, $enableIndividualControl, $individualControlSchemaMode, $matchNullControlEntry) {
