@@ -2,7 +2,6 @@
 namespace PoP\AccessControl\ConfigurationEntries;
 
 use PoP\AccessControl\Environment;
-use PoP\AccessControl\Schema\SchemaModes;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
 use PoP\ComponentModel\DirectiveResolvers\DirectiveResolverInterface;
 use PoP\MandatoryDirectivesByConfiguration\ConfigurationEntries\ConfigurableMandatoryDirectivesForDirectivesTrait;
