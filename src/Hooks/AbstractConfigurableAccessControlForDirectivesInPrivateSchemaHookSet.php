@@ -8,6 +8,7 @@ abstract class AbstractConfigurableAccessControlForDirectivesInPrivateSchemaHook
 {
     use ConfigurableMandatoryDirectivesForDirectivesTrait, AccessControlConfigurableMandatoryDirectivesForDirectivesTrait {
         AccessControlConfigurableMandatoryDirectivesForDirectivesTrait::getMatchingEntries insteadof ConfigurableMandatoryDirectivesForDirectivesTrait;
+        AccessControlConfigurableMandatoryDirectivesForDirectivesTrait::getEntries insteadof ConfigurableMandatoryDirectivesForDirectivesTrait;
     }
 
     protected function enabled(): bool

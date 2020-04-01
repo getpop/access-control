@@ -9,6 +9,7 @@ trait ConfigurableAccessControlForFieldsTypeResolverDecoratorTrait
 {
     use ConfigurableMandatoryDirectivesForFieldsTypeResolverDecoratorTrait, AccessControlConfigurableMandatoryDirectivesForFieldsTrait {
         AccessControlConfigurableMandatoryDirectivesForFieldsTrait::getMatchingEntries insteadof ConfigurableMandatoryDirectivesForFieldsTypeResolverDecoratorTrait;
+        AccessControlConfigurableMandatoryDirectivesForFieldsTrait::getConfigurationEntries insteadof ConfigurableMandatoryDirectivesForFieldsTypeResolverDecoratorTrait;
     }
 
     public function enabled(TypeResolverInterface $typeResolver): bool
