@@ -2,7 +2,7 @@
 namespace PoP\AccessControl\TypeResolverDecorators;
 
 use PoP\ComponentModel\Facades\Schema\FieldQueryInterpreterFacade;
-use PoP\AccessControl\DirectiveResolvers\DisableAccessDirectiveResolver;
+use PoP\AccessControl\DirectiveResolvers\DisableAccessForDirectivesDirectiveResolver;
 use PoP\AccessControl\TypeResolverDecorators\AbstractConfigurableAccessControlForDirectivesInPublicSchemaTypeResolverDecorator;
 
 abstract class AbstractDisableAccessConfigurableAccessControlForDirectivesInPublicSchemaTypeResolverDecorator extends AbstractConfigurableAccessControlForDirectivesInPublicSchemaTypeResolverDecorator
@@ -11,7 +11,7 @@ abstract class AbstractDisableAccessConfigurableAccessControlForDirectivesInPubl
     {
         $fieldQueryInterpreter = FieldQueryInterpreterFacade::getInstance();
         $disableAccessDirective = $fieldQueryInterpreter->getDirective(
-            DisableAccessDirectiveResolver::getDirectiveName()
+            DisableAccessForDirectivesDirectiveResolver::getDirectiveName()
         );
         return [
             $disableAccessDirective,
