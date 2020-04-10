@@ -31,24 +31,34 @@ trait AccessControlConfigurableMandatoryDirectivesForDirectivesTrait
         if (!Environment::enableIndividualControlForPublicPrivateSchemaMode()) {
             return $this->getUpstreamMatchingEntries($entryList, $value);
         }
+        /**
+         * Sometimes there's a value (eg: filter by role), sometimes not (eg: disable).
+         * When there's a value, filter all entries that contain it
+         */
         if ($value) {
-            $individualControlSchemaMode = $this->getSchemaMode();
-            $matchNullControlEntry = $this->doesSchemaModeProcessNullControlEntry();
-            return array_filter(
+            $entryList = array_filter(
                 $entryList,
-                function($entry) use($value, $individualControlSchemaMode, $matchNullControlEntry) {
-                    return $entry[1] == $value &&
-                    (
-                        $entry[2] == $individualControlSchemaMode ||
-                        (
-                            is_null($entry[2]) &&
-                            $matchNullControlEntry
-                        )
-                    );
+                function($entry) use($value) {
+                    return $entry[1] == $value;
                 }
             );
         }
-        return $entryList;
+        /**
+         * Then filter all entries by individual access control
+         */
+        $individualControlSchemaMode = $this->getSchemaMode();
+        $matchNullControlEntry = $this->doesSchemaModeProcessNullControlEntry();
+        return array_filter(
+            $entryList,
+            function($entry) use($individualControlSchemaMode, $matchNullControlEntry) {
+                return
+                    $entry[2] == $individualControlSchemaMode ||
+                    (
+                        is_null($entry[2]) &&
+                        $matchNullControlEntry
+                    );
+            }
+        );
     }
 
     public function maybeFilterDirectiveName(bool $include, TypeResolverInterface $typeResolver, DirectiveResolverInterface $directiveResolver, string $directiveName): bool
