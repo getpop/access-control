@@ -38,7 +38,7 @@ trait AccessControlConfigurableMandatoryDirectivesForDirectivesTrait
         if ($value) {
             $entryList = array_filter(
                 $entryList,
-                function($entry) use($value) {
+                function ($entry) use ($value) {
                     return $entry[1] == $value;
                 }
             );
@@ -50,7 +50,7 @@ trait AccessControlConfigurableMandatoryDirectivesForDirectivesTrait
         $matchNullControlEntry = $this->doesSchemaModeProcessNullControlEntry();
         return array_filter(
             $entryList,
-            function($entry) use($individualControlSchemaMode, $matchNullControlEntry) {
+            function ($entry) use ($individualControlSchemaMode, $matchNullControlEntry) {
                 return
                     $entry[2] == $individualControlSchemaMode ||
                     (

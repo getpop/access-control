@@ -20,4 +20,3 @@ class Environment
         return isset($_ENV[self::ENABLE_INDIVIDUAL_CONTROL_FOR_PUBLIC_PRIVATE_SCHEMA_MODE]) ? strtolower($_ENV[self::ENABLE_INDIVIDUAL_CONTROL_FOR_PUBLIC_PRIVATE_SCHEMA_MODE]) == "true" : false;
     }
 }
-

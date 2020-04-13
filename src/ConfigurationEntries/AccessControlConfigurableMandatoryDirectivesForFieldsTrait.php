@@ -38,7 +38,7 @@ trait AccessControlConfigurableMandatoryDirectivesForFieldsTrait
         $matchNullControlEntry = $this->doesSchemaModeProcessNullControlEntry();
         return array_filter(
             $entryList,
-            function($entry) use($typeResolverClass, $fieldName, $individualControlSchemaMode, $matchNullControlEntry) {
+            function ($entry) use ($typeResolverClass, $fieldName, $individualControlSchemaMode, $matchNullControlEntry) {
                 return
                     $entry[0] == $typeResolverClass &&
                     $entry[1] == $fieldName &&

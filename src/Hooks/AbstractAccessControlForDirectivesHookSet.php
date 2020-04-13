@@ -16,7 +16,7 @@ abstract class AbstractAccessControlForDirectivesHookSet extends AbstractCMSBoot
         }
         // If no directiveNames defined, apply to all of them
         if ($directiveNames = array_map(
-            function($directiveResolverClass) {
+            function ($directiveResolverClass) {
                 return $directiveResolverClass::getDirectiveName();
             },
             $this->getDirectiveResolverClasses()
