@@ -16,7 +16,7 @@ Access Control for fields and directives
 Via Composer
 
 ``` bash
-$ composer require getpop/access-control dev-master
+composer require getpop/access-control dev-master
 ```
 
 **Note:** Your `composer.json` file must have the configuration below to accept minimum stability `"dev"` (there are no releases for PoP yet, and the code is installed directly from the `master` branch):
@@ -52,7 +52,6 @@ In addition, whenever a validation must be performed to know if the user can acc
 1. `NoCache` for Fields in Private schema mode
 2. `NoCache` for Directives in Private schema mode
 
-
 ## Change log
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
@@ -60,7 +59,7 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 ## Testing
 
 ``` bash
-$ composer test
+composer test
 ```
 
 ## Contributing
