@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 namespace PoP\AccessControl\DirectiveResolvers;
 
 use PoP\Translation\Facades\TranslationAPIFacade;

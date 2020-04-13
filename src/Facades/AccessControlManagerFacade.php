@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 namespace PoP\AccessControl\Facades;
 
 use PoP\AccessControl\Services\AccessControlManagerInterface;
