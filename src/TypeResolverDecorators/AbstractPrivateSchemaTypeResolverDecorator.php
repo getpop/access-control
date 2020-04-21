@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace PoP\AccessControl\TypeResolverDecorators;
 
-use PoP\AccessControl\Environment;
 use PoP\AccessControl\ComponentConfiguration;
 use PoP\AccessControl\Schema\SchemaModes;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
@@ -22,7 +21,7 @@ abstract class AbstractPrivateSchemaTypeResolverDecorator extends AbstractTypeRe
     {
         return
             ComponentConfiguration::enableIndividualControlForPublicPrivateSchemaMode() ||
-            Environment::usePrivateSchemaMode();
+            ComponentConfiguration::usePrivateSchemaMode();
     }
 
     protected function getSchemaMode(): string

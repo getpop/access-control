@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace PoP\AccessControl\ConfigurationEntries;
 
-use PoP\AccessControl\Environment;
+use PoP\AccessControl\ComponentConfiguration;
 use PoP\AccessControl\Schema\SchemaModes;
 
 trait AccessControlConfigurableMandatoryDirectivesForItemsTrait
@@ -20,8 +20,8 @@ trait AccessControlConfigurableMandatoryDirectivesForItemsTrait
     {
         $individualControlSchemaMode = $this->getSchemaMode();
         return
-            (Environment::usePrivateSchemaMode() && $individualControlSchemaMode == SchemaModes::PRIVATE_SCHEMA_MODE) ||
-            (!Environment::usePrivateSchemaMode() && $individualControlSchemaMode == SchemaModes::PUBLIC_SCHEMA_MODE);
+            (ComponentConfiguration::usePrivateSchemaMode() && $individualControlSchemaMode == SchemaModes::PRIVATE_SCHEMA_MODE) ||
+            (!ComponentConfiguration::usePrivateSchemaMode() && $individualControlSchemaMode == SchemaModes::PUBLIC_SCHEMA_MODE);
     }
 
     abstract protected function getSchemaMode(): string;
