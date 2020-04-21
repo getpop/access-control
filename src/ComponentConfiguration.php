@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace PoP\AccessControl;
 
-use PoP\ComponentModel\AbstractComponentConfiguration;
+use PoP\ComponentModel\ComponentConfiguration\AbstractComponentConfiguration;
 
 class ComponentConfiguration extends AbstractComponentConfiguration
 {
