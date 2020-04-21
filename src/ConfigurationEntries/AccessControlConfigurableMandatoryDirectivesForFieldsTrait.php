@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace PoP\AccessControl\ConfigurationEntries;
 
 use PoP\AccessControl\Environment;
+use PoP\AccessControl\ComponentConfiguration;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
 use PoP\ComponentModel\FieldResolvers\FieldResolverInterface;
 use PoP\MandatoryDirectivesByConfiguration\ConfigurationEntries\ConfigurableMandatoryDirectivesForFieldsTrait;
@@ -33,7 +34,7 @@ trait AccessControlConfigurableMandatoryDirectivesForFieldsTrait
          * If the schema mode was not defined in the entry, then this field is valid if the default
          * schema mode is the same required one
          */
-        if (!Environment::enableIndividualControlForPublicPrivateSchemaMode()) {
+        if (!ComponentConfiguration::enableIndividualControlForPublicPrivateSchemaMode()) {
             return $this->getUpstreamMatchingEntries($entryList, $typeResolver, $fieldName);
         }
         $typeResolverClass = get_class($typeResolver);
@@ -61,7 +62,7 @@ trait AccessControlConfigurableMandatoryDirectivesForFieldsTrait
         /**
          * If enabling individual control, then check if there is any entry for this field and schema mode
          */
-        if (Environment::enableIndividualControlForPublicPrivateSchemaMode()) {
+        if (ComponentConfiguration::enableIndividualControlForPublicPrivateSchemaMode()) {
             /**
              * If there are no entries, then exit by returning the original hook value
              */

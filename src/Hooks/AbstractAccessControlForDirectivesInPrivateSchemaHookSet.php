@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace PoP\AccessControl\Hooks;
 
 use PoP\AccessControl\Environment;
+use PoP\AccessControl\ComponentConfiguration;
 use PoP\AccessControl\Hooks\AbstractAccessControlForDirectivesHookSet;
 use PoP\AccessControl\Schema\SchemaModes;
 
@@ -13,7 +14,7 @@ abstract class AbstractAccessControlForDirectivesInPrivateSchemaHookSet extends 
     protected function enabled(): bool
     {
         return
-            Environment::enableIndividualControlForPublicPrivateSchemaMode() ||
+            ComponentConfiguration::enableIndividualControlForPublicPrivateSchemaMode() ||
             Environment::usePrivateSchemaMode();
     }
 

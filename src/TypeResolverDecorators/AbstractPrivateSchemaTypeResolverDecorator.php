@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace PoP\AccessControl\TypeResolverDecorators;
 
 use PoP\AccessControl\Environment;
+use PoP\AccessControl\ComponentConfiguration;
 use PoP\AccessControl\Schema\SchemaModes;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
 use PoP\ComponentModel\TypeResolverDecorators\AbstractTypeResolverDecorator;
@@ -20,7 +21,7 @@ abstract class AbstractPrivateSchemaTypeResolverDecorator extends AbstractTypeRe
     public function enabled(TypeResolverInterface $typeResolver): bool
     {
         return
-            Environment::enableIndividualControlForPublicPrivateSchemaMode() ||
+            ComponentConfiguration::enableIndividualControlForPublicPrivateSchemaMode() ||
             Environment::usePrivateSchemaMode();
     }
 

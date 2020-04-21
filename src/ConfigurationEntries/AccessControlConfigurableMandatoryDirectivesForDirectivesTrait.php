@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace PoP\AccessControl\ConfigurationEntries;
 
 use PoP\AccessControl\Environment;
+use PoP\AccessControl\ComponentConfiguration;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
 use PoP\ComponentModel\DirectiveResolvers\DirectiveResolverInterface;
 use PoP\MandatoryDirectivesByConfiguration\ConfigurationEntries\ConfigurableMandatoryDirectivesForDirectivesTrait;
@@ -31,7 +32,7 @@ trait AccessControlConfigurableMandatoryDirectivesForDirectivesTrait
          * If the schema mode was not defined in the entry, then this field is valid if the default
          * schema mode is the same required one
          */
-        if (!Environment::enableIndividualControlForPublicPrivateSchemaMode()) {
+        if (!ComponentConfiguration::enableIndividualControlForPublicPrivateSchemaMode()) {
             return $this->getUpstreamMatchingEntries($entryList, $value);
         }
         /**
@@ -69,7 +70,7 @@ trait AccessControlConfigurableMandatoryDirectivesForDirectivesTrait
         /**
          * If not enabling individual control, then the parent case already deals with the general case
          */
-        if (!Environment::enableIndividualControlForPublicPrivateSchemaMode()) {
+        if (!ComponentConfiguration::enableIndividualControlForPublicPrivateSchemaMode()) {
             return parent::maybeFilterDirectiveName($include, $typeResolver, $directiveResolver, $directiveName);
         }
 
