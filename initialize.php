@@ -1,2 +1,2 @@
 <?php
-\PoP\AccessControl\Component::init();
+//\PoP\AccessControl\Component::initialize();
