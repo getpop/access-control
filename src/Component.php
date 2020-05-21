@@ -30,7 +30,7 @@ class Component extends AbstractComponent
     /**
      * Initialize services
      */
-    protected static function doInitialize()
+    protected static function doInitialize(): void
     {
         if (self::isEnabled()) {
             parent::doInitialize();
@@ -49,7 +49,7 @@ class Component extends AbstractComponent
      *
      * @return void
      */
-    public static function beforeBoot()
+    public static function beforeBoot(): void
     {
         parent::beforeBoot();
 
@@ -63,7 +63,7 @@ class Component extends AbstractComponent
      *
      * @return void
      */
-    public static function afterBoot()
+    public static function afterBoot(): void
     {
         parent::afterBoot();
 
