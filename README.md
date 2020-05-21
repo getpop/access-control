@@ -20,6 +20,14 @@ Via Composer
 composer require getpop/access-control
 ```
 
+## Usage
+
+Initialize the component:
+
+``` php
+\PoP\AccessControl\Component::initialize();
+```
+
 ## How does it work?
 
 Access control deals in 2 modes: Public/Private schema modes.
