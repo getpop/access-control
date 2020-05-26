@@ -25,7 +25,9 @@ composer require getpop/access-control
 Initialize the component:
 
 ``` php
-\PoP\AccessControl\Component::initialize();
+\PoP\Root\ComponentLoader::initializeComponents([
+    \PoP\AccessControl\Component::class,
+]);
 ```
 
 ## How does it work?
