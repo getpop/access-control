@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace PoP\AccessControl;
 
-use PoP\ComponentModel\ComponentConfiguration\AbstractComponentConfiguration;
+use PoP\ComponentModel\ComponentConfiguration\ComponentConfigurationTrait;
 
-class ComponentConfiguration extends AbstractComponentConfiguration
+class ComponentConfiguration
 {
+    use ComponentConfigurationTrait;
+
     private static $usePrivateSchemaMode;
     private static $enableIndividualControlForPublicPrivateSchemaMode;
 
@@ -19,7 +21,7 @@ class ComponentConfiguration extends AbstractComponentConfiguration
         $callback = [Environment::class, 'usePrivateSchemaMode'];
 
         // Initialize property from the environment/hook
-        self::maybeInitEnvironmentVariable(
+        self::maybeInitializeConfigurationValue(
             $envVariable,
             $selfProperty,
             $callback
@@ -35,7 +37,7 @@ class ComponentConfiguration extends AbstractComponentConfiguration
         $callback = [Environment::class, 'enableIndividualControlForPublicPrivateSchemaMode'];
 
         // Initialize property from the environment/hook
-        self::maybeInitEnvironmentVariable(
+        self::maybeInitializeConfigurationValue(
             $envVariable,
             $selfProperty,
             $callback
