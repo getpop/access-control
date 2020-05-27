@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PoP\AccessControl;
 
+use PoP\ComponentModel\ComponentConfiguration\EnvironmentValueHelpers;
 use PoP\ComponentModel\ComponentConfiguration\ComponentConfigurationTrait;
 
 class ComponentConfiguration
@@ -18,12 +19,14 @@ class ComponentConfiguration
         // Define properties
         $envVariable = Environment::USE_PRIVATE_SCHEMA_MODE;
         $selfProperty = &self::$usePrivateSchemaMode;
-        $callback = [Environment::class, 'usePrivateSchemaMode'];
+        $defaultValue = false;
+        $callback = [EnvironmentValueHelpers::class, 'toBool'];
 
         // Initialize property from the environment/hook
         self::maybeInitializeConfigurationValue(
             $envVariable,
             $selfProperty,
+            $defaultValue,
             $callback
         );
         return $selfProperty;
@@ -34,12 +37,14 @@ class ComponentConfiguration
         // Define properties
         $envVariable = Environment::ENABLE_INDIVIDUAL_CONTROL_FOR_PUBLIC_PRIVATE_SCHEMA_MODE;
         $selfProperty = &self::$enableIndividualControlForPublicPrivateSchemaMode;
-        $callback = [Environment::class, 'enableIndividualControlForPublicPrivateSchemaMode'];
+        $defaultValue = true;
+        $callback = [EnvironmentValueHelpers::class, 'toBool'];
 
         // Initialize property from the environment/hook
         self::maybeInitializeConfigurationValue(
             $envVariable,
             $selfProperty,
+            $defaultValue,
             $callback
         );
         return $selfProperty;
