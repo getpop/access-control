@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace PoP\AccessControl\ConfigurationEntries;
 
-use PoP\AccessControl\Environment;
 use PoP\AccessControl\ComponentConfiguration;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
 use PoP\ComponentModel\FieldResolvers\FieldResolverInterface;
