@@ -25,8 +25,12 @@ trait AccessControlConfigurableMandatoryDirectivesForFieldsTrait
      * @param string $fieldName
      * @return boolean
      */
-    final protected function getMatchingEntries(array $entryList, TypeResolverInterface $typeResolver, string $fieldName): array
-    {
+    final protected function getMatchingEntries(
+        array $entryList,
+        TypeResolverInterface $typeResolver,
+        array $fieldInterfaceResolverClasses,
+        string $fieldName
+    ): array {
         /**
          * If enabling individual control over public/private schema modes, then we must also check
          * that this field has the required mode.
@@ -41,11 +45,20 @@ trait AccessControlConfigurableMandatoryDirectivesForFieldsTrait
         $matchNullControlEntry = $this->doesSchemaModeProcessNullControlEntry();
         return array_filter(
             $entryList,
-            function ($entry) use ($typeResolverClass, $fieldName, $individualControlSchemaMode, $matchNullControlEntry) {
+            function ($entry) use (
+                $typeResolverClass,
+                $fieldInterfaceResolverClasses,
+                $fieldName,
+                $individualControlSchemaMode,
+                $matchNullControlEntry
+            ): bool {
                 return
-                    $entry[0] == $typeResolverClass &&
-                    $entry[1] == $fieldName &&
                     (
+                        $entry[0] == $typeResolverClass
+                        || in_array($entry[0], $fieldInterfaceResolverClasses)
+                    )
+                    && $entry[1] == $fieldName
+                    && (
                         $entry[3] == $individualControlSchemaMode ||
                         (
                             is_null($entry[3]) &&
@@ -70,7 +83,7 @@ trait AccessControlConfigurableMandatoryDirectivesForFieldsTrait
             /**
              * If there are no entries, then exit by returning the original hook value
              */
-            if (empty($this->getEntries($typeResolver, $fieldName))) {
+            if (empty($this->getEntries($typeResolver, $fieldInterfaceResolverClasses, $fieldName))) {
                 return $include;
             }
         }
