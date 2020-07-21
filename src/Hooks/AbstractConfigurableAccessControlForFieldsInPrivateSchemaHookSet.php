@@ -35,8 +35,12 @@ abstract class AbstractConfigurableAccessControlForFieldsInPrivateSchemaHookSet 
      * @param string $fieldName
      * @return boolean
      */
-    protected function removeFieldName(TypeResolverInterface $typeResolver, FieldResolverInterface $fieldResolver, string $fieldName): bool
-    {
+    protected function removeFieldName(
+        TypeResolverInterface $typeResolver,
+        FieldResolverInterface $fieldResolver,
+        array $fieldInterfaceResolverClasses,
+        string $fieldName
+    ): bool {
         // Obtain all entries for the current combination of typeResolver/fieldName
         foreach ($this->getEntries($typeResolver, $fieldName) as $entry) {
             // Obtain the 3rd value on each entry: if the validation is "in" or "out"

@@ -33,7 +33,7 @@ abstract class AbstractAccessControlForFieldsHookSet extends AbstractCMSBootHook
                     HookHelpers::getHookNameToFilterField($fieldName),
                     array($this, 'maybeFilterFieldName'),
                     10,
-                    4
+                    5
                 );
             }
         } else {
@@ -41,20 +41,25 @@ abstract class AbstractAccessControlForFieldsHookSet extends AbstractCMSBootHook
                 HookHelpers::getHookNameToFilterField(),
                 array($this, 'maybeFilterFieldName'),
                 10,
-                4
+                5
             );
         }
     }
 
-    public function maybeFilterFieldName(bool $include, TypeResolverInterface $typeResolver, FieldResolverInterface $fieldResolver, string $fieldName): bool
-    {
+    public function maybeFilterFieldName(
+        bool $include,
+        TypeResolverInterface $typeResolver,
+        FieldResolverInterface $fieldResolver,
+        array $fieldInterfaceResolverClasses,
+        string $fieldName
+    ): bool {
         // Because there may be several hooks chained, if any of them has already rejected the field, then already return that response
         if (!$include) {
             return false;
         }
 
         // Check if to remove the field
-        return !$this->removeFieldName($typeResolver, $fieldResolver, $fieldName);
+        return !$this->removeFieldName($typeResolver, $fieldResolver, $fieldInterfaceResolverClasses, $fieldName);
     }
     /**
      * Field names to remove
@@ -70,8 +75,12 @@ abstract class AbstractAccessControlForFieldsHookSet extends AbstractCMSBootHook
      * @param string $fieldName
      * @return boolean
      */
-    protected function removeFieldName(TypeResolverInterface $typeResolver, FieldResolverInterface $fieldResolver, string $fieldName): bool
-    {
+    protected function removeFieldName(
+        TypeResolverInterface $typeResolver,
+        FieldResolverInterface $fieldResolver,
+        array $fieldInterfaceResolverClasses,
+        string $fieldName
+    ): bool {
         return true;
     }
 }

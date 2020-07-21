@@ -56,8 +56,13 @@ trait AccessControlConfigurableMandatoryDirectivesForFieldsTrait
         );
     }
 
-    public function maybeFilterFieldName(bool $include, TypeResolverInterface $typeResolver, FieldResolverInterface $fieldResolver, string $fieldName): bool
-    {
+    public function maybeFilterFieldName(
+        bool $include,
+        TypeResolverInterface $typeResolver,
+        FieldResolverInterface $fieldResolver,
+        array $fieldInterfaceResolverClasses,
+        string $fieldName
+    ): bool {
         /**
          * If enabling individual control, then check if there is any entry for this field and schema mode
          */
@@ -73,6 +78,12 @@ trait AccessControlConfigurableMandatoryDirectivesForFieldsTrait
         /**
          * The parent case deals with the general case
          */
-        return parent::maybeFilterFieldName($include, $typeResolver, $fieldResolver, $fieldName);
+        return parent::maybeFilterFieldName(
+            $include,
+            $typeResolver,
+            $fieldResolver,
+            $fieldInterfaceResolverClasses,
+            $fieldName
+        );
     }
 }
