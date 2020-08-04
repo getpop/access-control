@@ -38,7 +38,12 @@ trait AccessControlConfigurableMandatoryDirectivesForFieldsTrait
          * schema mode is the same required one
          */
         if (!ComponentConfiguration::enableIndividualControlForPublicPrivateSchemaMode()) {
-            return $this->getUpstreamMatchingEntries($entryList, $typeResolver, $fieldName);
+            return $this->getUpstreamMatchingEntries(
+                $entryList,
+                $typeResolver,
+                $fieldInterfaceResolverClasses,
+                $fieldName
+            );
         }
         $typeResolverClass = get_class($typeResolver);
         $individualControlSchemaMode = $this->getSchemaMode();
