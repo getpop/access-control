@@ -11,6 +11,10 @@ class AccessControlManagerFacade
 {
     public static function getInstance(): AccessControlManagerInterface
     {
-        return ContainerBuilderFactory::getInstance()->get('access_control_manager');
+        /**
+         * @var AccessControlManagerInterface
+         */
+        $service = ContainerBuilderFactory::getInstance()->get('access_control_manager');
+        return $service;
     }
 }
