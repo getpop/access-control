@@ -50,27 +50,19 @@ trait AccessControlConfigurableMandatoryDirectivesForFieldsTrait
         $matchNullControlEntry = $this->doesSchemaModeProcessNullControlEntry();
         return array_filter(
             $entryList,
-            function ($entry) use (
-                $typeResolverClass,
-                $fieldInterfaceResolverClasses,
-                $fieldName,
-                $individualControlSchemaMode,
-                $matchNullControlEntry
-            ): bool {
-                return
+            fn ($entry): bool =>
+                (
+                    $entry[0] == $typeResolverClass
+                    || in_array($entry[0], $fieldInterfaceResolverClasses)
+                )
+                && $entry[1] == $fieldName
+                && (
+                    $entry[3] == $individualControlSchemaMode ||
                     (
-                        $entry[0] == $typeResolverClass
-                        || in_array($entry[0], $fieldInterfaceResolverClasses)
+                        is_null($entry[3]) &&
+                        $matchNullControlEntry
                     )
-                    && $entry[1] == $fieldName
-                    && (
-                        $entry[3] == $individualControlSchemaMode ||
-                        (
-                            is_null($entry[3]) &&
-                            $matchNullControlEntry
-                        )
-                    );
-            }
+                )
         );
     }
 
