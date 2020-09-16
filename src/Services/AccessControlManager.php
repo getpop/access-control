@@ -8,8 +8,14 @@ use PoP\AccessControl\Services\AccessControlManagerInterface;
 
 class AccessControlManager implements AccessControlManagerInterface
 {
-    protected $fieldEntries = [];
-    protected $directiveEntries = [];
+    /**
+     * @var array<string, array>
+     */
+    protected array $fieldEntries = [];
+    /**
+     * @var array<string, array>
+     */
+    protected array $directiveEntries = [];
 
     public function getEntriesForFields(string $group): array
     {
