@@ -14,7 +14,7 @@ class AccessControlManagerFacade
         /**
          * @var AccessControlManagerInterface
          */
-        $service = ContainerBuilderFactory::getInstance()->get('access_control_manager');
+        $service = ContainerBuilderFactory::getInstance()->get(AccessControlManagerInterface::class);
         return $service;
     }
 }
