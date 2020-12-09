@@ -52,9 +52,12 @@ trait AccessControlConfigurableMandatoryDirectivesForDirectivesTrait
         return array_filter(
             $entryList,
             fn ($entry) =>
-                $entry[2] == $individualControlSchemaMode ||
                 (
-                    is_null($entry[2]) &&
+                    isset($entry[2])
+                    && $entry[2] == $individualControlSchemaMode
+                )
+                || (
+                    !isset($entry[2]) &&
                     $matchNullControlEntry
                 )
         );

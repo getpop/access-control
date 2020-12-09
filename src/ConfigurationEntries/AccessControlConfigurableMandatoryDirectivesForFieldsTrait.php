@@ -57,10 +57,13 @@ trait AccessControlConfigurableMandatoryDirectivesForFieldsTrait
                 )
                 && $entry[1] == $fieldName
                 && (
-                    $entry[3] == $individualControlSchemaMode ||
                     (
-                        is_null($entry[3]) &&
-                        $matchNullControlEntry
+                        isset($entry[3])
+                        && $entry[3] == $individualControlSchemaMode
+                    )
+                    || (
+                        !isset($entry[3])
+                        && $matchNullControlEntry
                     )
                 )
         );
