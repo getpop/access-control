@@ -41,7 +41,7 @@ trait AccessControlConfigurableMandatoryDirectivesForDirectivesTrait
         if ($value) {
             $entryList = array_filter(
                 $entryList,
-                fn ($entry) => $entry[1] == $value
+                fn ($entry) => ($entry[1] ?? null) == $value
             );
         }
         /**
