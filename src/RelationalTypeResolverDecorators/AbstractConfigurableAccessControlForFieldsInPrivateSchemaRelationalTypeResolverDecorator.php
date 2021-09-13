@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace PoP\AccessControl\TypeResolverDecorators;
+namespace PoP\AccessControl\RelationalTypeResolverDecorators;
 
 use PoP\ComponentModel\Instances\InstanceManagerInterface;
 use PoP\AccessControl\Services\AccessControlManagerInterface;
 use PoP\ComponentModel\Schema\FieldQueryInterpreterInterface;
-use PoP\AccessControl\TypeResolverDecorators\AbstractPublicSchemaTypeResolverDecorator;
+use PoP\AccessControl\RelationalTypeResolverDecorators\ConfigurableAccessControlForFieldsRelationalTypeResolverDecoratorTrait;
 
-abstract class AbstractConfigurableAccessControlForFieldsInPublicSchemaTypeResolverDecorator extends AbstractPublicSchemaTypeResolverDecorator
+abstract class AbstractConfigurableAccessControlForFieldsInPrivateSchemaRelationalTypeResolverDecorator extends AbstractPrivateSchemaRelationalTypeResolverDecorator
 {
-    use ConfigurableAccessControlForFieldsTypeResolverDecoratorTrait;
+    use ConfigurableAccessControlForFieldsRelationalTypeResolverDecoratorTrait;
 
     public function __construct(
         InstanceManagerInterface $instanceManager,
