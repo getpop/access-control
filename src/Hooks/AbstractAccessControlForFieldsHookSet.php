@@ -23,6 +23,7 @@ abstract class AbstractAccessControlForFieldsHookSet extends AbstractAfterAppBoo
     }
     final protected function getAccessControlManager(): AccessControlManagerInterface
     {
+        /** @var AccessControlManagerInterface */
         return $this->accessControlManager ??= $this->instanceManager->getInstance(AccessControlManagerInterface::class);
     }
 
@@ -79,6 +80,8 @@ abstract class AbstractAccessControlForFieldsHookSet extends AbstractAfterAppBoo
     }
     /**
      * Field names to remove
+     *
+     * @return string[];
      */
     abstract protected function getFieldNames(): array;
     /**
